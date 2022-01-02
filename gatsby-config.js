@@ -12,6 +12,7 @@ module.exports = {
     "gatsby-plugin-sitemap",
     "gatsby-plugin-offline",
     "gatsby-transformer-sharp",
+    "gatsby-plugin-postcss",
     {
       resolve: "gatsby-source-filesystem",
       options: {
