@@ -5,6 +5,7 @@ module.exports = {
     description: "Convert sane LaTeX to ANS-flavoured LaTeX",
     image: "/images/logo.png",
   },
+  pathPrefix: "/bLANS",
   plugins: [
     "gatsby-plugin-sharp",
     "gatsby-plugin-react-helmet",
