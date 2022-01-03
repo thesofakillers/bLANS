@@ -2,9 +2,10 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import Seo from "./Seo";
 import { Footer } from "./Footer";
+import Header from "./Header";
+import Content from "./Content";
 
 export const Layout = ({ children }) => {
-  const mainClassNames = ["column", "is-offset-1-mobile", "is-narrow-tablet"];
   return (
     <>
       <Helmet>
@@ -15,8 +16,9 @@ export const Layout = ({ children }) => {
         />
       </Helmet>
       <Seo />
-      <div className="main">
-        <div className={mainClassNames.join(" ")}>{children}</div>
+      <div className="flex flex-col h-screen">
+        <Header />
+        <Content />
         <Footer />
       </div>
     </>

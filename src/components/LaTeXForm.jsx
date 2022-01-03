@@ -1,4 +1,38 @@
 import React, { useState } from "react";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import Button from "./Button";
+
+const buttonSytles = [
+  "cursor-pointer",
+  "bg-ans-yellow",
+  "p-2",
+  "rounded-md",
+  "hover:brightness-105",
+  "float-right",
+  "transition",
+  "ease-in-out",
+  "focus:scale-90",
+];
+const textareaStyles = [
+  "text-xs",
+  "w-full",
+  "px-3",
+  "py-1.5",
+  "min-h-[7rem]",
+  "font-normal",
+  "bg-white",
+  "bg-clip-padding",
+  "border",
+  "border-solid",
+  "border-gray-300",
+  "rounded",
+  "transition",
+  "ease-in-out",
+  "m-0",
+  "focus:text-gray-700",
+  "focus:border-indigo-500",
+  "focus:outline-ans-purple",
+];
 
 function convertLatex(sourceLatex) {
   // first, convert $$...$$ to $$$ $$$
@@ -27,22 +61,49 @@ function LaTeXForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="srclatex">
-        <h2>Source LaTeX</h2>
-        <textarea
-          name="srclatex"
-          id="srclatex"
-          value={sourceLatex}
-          onChange={(e) => setSourceLatex(e.target.value)}
+    <div className="ma-auto px-5 py-10 container mx-auto max-w-2xl">
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="srclatex">
+          <h2>Source LaTeX</h2>
+          <textarea
+            name="srclatex"
+            id="srclatex"
+            value={sourceLatex}
+            onChange={(e) => setSourceLatex(e.target.value)}
+            className={textareaStyles.join(" ")}
+          />
+        </label>
+        <label htmlFor="tgtlatex">
+          <h2>Target LaTeX</h2>
+          <textarea
+            name="tgtlatex"
+            id="tgtlatex"
+            value={targetLatex}
+            readOnly
+            className={textareaStyles.join(" ")}
+          />
+          <CopyToClipboard
+            text={targetLatex}
+            onCopy={() => console.log("copied")}
+          >
+            <Button
+              type="submit"
+              bgColor="bg-slate-200"
+              value="Copy to Clipboard"
+              onClick={(e) => e.currentTarget.blur()}
+            />
+          </CopyToClipboard>
+        </label>
+        <Button
+          type="submit"
+          value="Convert"
+          bgColor="bg-ans-yellow"
+          position="float-right"
+          className={buttonSytles.join(" ")}
+          onClick={(e) => e.currentTarget.blur()}
         />
-      </label>
-      <label htmlFor="tgtlatex">
-        <h2>Target LaTeX</h2>
-        <textarea name="tgtlatex" id="tgtlatex" value={targetLatex} readOnly />
-      </label>
-      <input type="submit" value="Submit" />
-    </form>
+      </form>
+    </div>
   );
 }
 
