@@ -1,7 +1,7 @@
 # bLANS: better LaTeX for ANS
 
 [ANS.app](https://ans.app/) is the satisfying grading platform. But sometimes
-typesetting math is not very satisfying. ANS uses its own flavour of markup
+typesetting math on ANS is not very satisfying. ANS uses its own flavour of markup
 which for typesetting [LaTeX](https://www.latex-project.org/) uses double dollar
 signs (\$\$) for inline equations and triple dollar signs (\$\$\$) for display
 equations. ANS has the extra quirk of not supporting line-breaks in LaTeX
