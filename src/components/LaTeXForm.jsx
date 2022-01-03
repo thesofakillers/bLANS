@@ -1,18 +1,16 @@
 import React, { useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import Button from "./Button";
 
 const buttonSytles = [
   "cursor-pointer",
-  "bg-ans-yellow",
   "p-2",
   "rounded-md",
   "hover:brightness-105",
-  "float-right",
   "transition",
   "ease-in-out",
   "focus:scale-90",
 ];
+
 const textareaStyles = [
   "text-xs",
   "w-full",
@@ -82,26 +80,22 @@ function LaTeXForm() {
             readOnly
             className={textareaStyles.join(" ")}
           />
-          <CopyToClipboard
-            text={targetLatex}
-            onCopy={() => console.log("copied")}
-          >
-            <Button
-              type="submit"
-              bgColor="bg-slate-200"
-              value="Copy to Clipboard"
+          <CopyToClipboard text={targetLatex}>
+            <button
+              className={[...buttonSytles, "bg-slate-200"].join(" ")}
               onClick={(e) => e.currentTarget.blur()}
-            />
+            >
+              Copy To Clipboard
+            </button>
           </CopyToClipboard>
         </label>
-        <Button
-          type="submit"
-          value="Convert"
-          bgColor="bg-ans-yellow"
-          position="float-right"
-          className={buttonSytles.join(" ")}
-          onClick={(e) => e.currentTarget.blur()}
-        />
+        <button
+          className={[...buttonSytles, "bg-ans-yellow", "float-right"].join(
+            " "
+          )}
+        >
+          Convert
+        </button>
       </form>
     </div>
   );
