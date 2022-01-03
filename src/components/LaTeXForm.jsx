@@ -1,6 +1,17 @@
 import React, { useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
+const startSourceLatex = `Here is some markup you would normally write in something like VSCode. 
+In-line equations with single dollar signs, $\\frac{1}{2}$, and display equations 
+with double dollar signs and line breaks, 
+$$
+\\frac{1}{2}.
+$$
+ANS supports slightly different syntax, press the convert button to see the result.
+
+You can edit this textarea as you please.
+`;
+
 const buttonSytles = [
   "cursor-pointer",
   "p-2",
@@ -16,7 +27,7 @@ const textareaStyles = [
   "w-full",
   "px-3",
   "py-1.5",
-  "min-h-[7rem]",
+  "min-h-[10rem]",
   "font-normal",
   "bg-white",
   "bg-clip-padding",
@@ -49,7 +60,7 @@ function convertLatex(sourceLatex) {
 }
 
 function LaTeXForm() {
-  const [sourceLatex, setSourceLatex] = useState("");
+  const [sourceLatex, setSourceLatex] = useState(startSourceLatex);
   const [targetLatex, setTargetLatex] = useState("");
 
   const handleSubmit = (e) => {
